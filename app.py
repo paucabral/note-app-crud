@@ -15,7 +15,8 @@ class Note(db.Model):
 
 
 class NoteSchema(ma.Schema):
-    fields = ("title", "content")
+    class Meta:
+        fields = ("title", "content")
 
 
 note_schema = NoteSchema()
