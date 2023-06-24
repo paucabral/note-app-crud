@@ -21,20 +21,17 @@
                 <tr>
                     <th>#</th>
                     <th>Title</th>
-                    <th>Content</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for note in notes %}
                 <tr>
-                    <td>{{ note.id }}</td>
-                    <td class="col-md-2">{{ note.title }}</td>
-                    <td>{{ note.content }}</td>
-                    <td class="col-md-2 action-items">
+                    <td class="col-md-1">{{ note.id }}</td>
+                    <td class="col-md-8">{{ note.title }}</td>
+                    <td class="col-md-3 action-items">
                         <a class="btn btn-primary" href="{{ url_for('get_note', note_id=note.id) }}"><i class="bi bi-eye-fill"></i> View</a>
-                        <a class="btn btn-warning text-white" href="{{ url_for('update_note', note_id=note.id) }}"><i class="bi bi-pencil-square"></i> Edit</a>
-                        <form class="unset" onsubmit="confirmDelete()" action="{{ url_for('delete_note', note_id=note.id) }}" method="POST"><button class="btn btn-danger" type="submit"><i class="bi bi-trash-fill"></i> Delete</button></form>
+                        <a class="btn btn-danger" href="{{ url_for('delete_note', note_id=note.id) }}" onclick="return confirm('Do you really want to delete this note?')"><i class="bi bi-trash-fill"></i> Delete</a>
                     </td>
                 </tr>
                 {% endfor %}
